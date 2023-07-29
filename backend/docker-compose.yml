@@ -1,0 +1,15 @@
+version: '3'
+services:
+  database:
+    container_name: e-commerce_container
+    image: mysql:8
+    ports:
+      - 3306:3306
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=commerce
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
