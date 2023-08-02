@@ -1,9 +1,9 @@
-import { useEffect } from "react";
-import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
-import Login from "./pages/login/Login";
-import Register from "./pages/register/Resgister";
-import Products from "./pages/products/Products";
-import NotFound from "./pages/notFound/NotFound";
+import { useEffect } from 'react';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import Login from './pages/login/Login';
+import Register from './pages/register/Register'
+import Products from './pages/products/Products';
+import NotFound from './pages/notFound/NotFound';
 
 export default function App() {
 
