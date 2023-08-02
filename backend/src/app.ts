@@ -1,12 +1,14 @@
 import express from 'express';
 import cors from 'cors';
+import userRouter from './routes/userRouter';
+import errorHandler from './middlewares/errorHandler';
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
-app.use(cors());
-
-app.get('/', (_req, res) => res.status(200).json({ message: 'Hello World!' }));
+app.use('/user', userRouter);
+app.use(errorHandler);
 
 export default app;

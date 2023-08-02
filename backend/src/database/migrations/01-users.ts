@@ -11,7 +11,16 @@ export default {
       name: {
         type: sequelize.STRING,
         allowNull: false,
-      }
+      },
+      email: {
+        type: sequelize.STRING,
+        allowNull: false,
+        unique: true,
+      },
+      password: {
+        type: sequelize.STRING,
+        allowNull: false,
+      },
     })
   },
   async down(queryInterface: QueryInterface) {
