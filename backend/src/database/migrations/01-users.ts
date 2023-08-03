@@ -1,4 +1,4 @@
-import { QueryInterface, DataTypes } from "sequelize"
+import { QueryInterface, DataTypes } from 'sequelize';
 
 export default {
   async up(queryInterface: QueryInterface, sequelize: typeof DataTypes) {
@@ -21,7 +21,11 @@ export default {
         type: sequelize.STRING,
         allowNull: false,
       },
-    })
+      role: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+    });
   },
   async down(queryInterface: QueryInterface) {
     await queryInterface.dropTable('users');

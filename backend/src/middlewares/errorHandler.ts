@@ -6,4 +6,3 @@ const errorHandler = (error: Error, _req: Request, res: Response, _next: NextFun
 };
 
 export default errorHandler;
-

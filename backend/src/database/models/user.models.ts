@@ -3,6 +3,9 @@ import connection from './index';
 
 class User extends Model {
   declare name: string;
+  declare email: string;
+  declare password: string;
+  declare role: string;
 }
 
 User.init({
@@ -16,6 +19,10 @@ User.init({
     unique: true,
   },
   password: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  role: {
     type: DataTypes.STRING,
     allowNull: false,
   },
