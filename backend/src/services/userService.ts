@@ -16,7 +16,6 @@ const register = async (user: IRegister): Promise<IService> => {
   }
 };
 
-//                     USERCREDENTIALS
 const login = async ({ email, password }: ILogin): Promise<IService> => {
   const data = await User.findOne({ where: { email, password }, attributes: { exclude: ['password'] } });
   if (!data) return { type: 'UNAUTHORIZED', message: 'Invalid fields' };
