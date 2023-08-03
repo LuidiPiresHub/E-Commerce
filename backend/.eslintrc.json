@@ -40,6 +40,7 @@
                 "ignoreRestSiblings": true
             }
         ],
-        "max-len": ["error", { "code": 120 }]
+        "max-len": ["error", { "code": 120 }],
+        "no-trailing-spaces": "error"
     }
 }
