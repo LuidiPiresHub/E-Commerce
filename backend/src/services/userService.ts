@@ -1,28 +1,28 @@
 import User from '../database/models/user.models';
 import { generateToken } from '../auth/jwtFunction';
-import { IRegister, ILogin } from '../interfaces/user.interface';
-import { UniqueConstraintError } from 'sequelize';
+import { IRegister, ILogin, IService } from '../interfaces/user.interface';
 
-const createUser = async (user: IRegister) => {
+const register = async (user: IRegister): Promise<IService> => {
   try {
     const { dataValues } = await User.create({ ...user });
     const { password: _, ...userData } = dataValues;
-    return { type: null, message: generateToken(userData) };
+    return { type: 'CREATED', message: generateToken(userData) };
   } catch (error) {
-    if (error instanceof UniqueConstraintError) {
-      return { type: 'unique', message: 'Email already registered' };
+    const { name } = error as Error;
+    if (name === 'SequelizeUniqueConstraintError') {
+      return { type: 'UNIQUE', message: 'Email already registered' };
     }
     throw error;
   }
 };
 
-const login = async ({ email, password }: ILogin) => {
+const login = async ({ email, password }: ILogin): Promise<IService> => {
   const data = await User.findOne({ where: { email, password }, attributes: { exclude: ['password'] } });
-  if (!data) return { type: 'invalid', message: 'Invalid fields' };
-  return { type: null, message: generateToken(data.dataValues) };
+  if (!data) return { type: 'UNAUTHORIZED', message: 'Invalid fields' };
+  return { type: 'OK', message: generateToken(data.dataValues) };
 };
 
 export default {
-  createUser,
+  register,
   login,
 };

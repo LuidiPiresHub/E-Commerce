@@ -1,25 +1,25 @@
-import { QueryInterface } from "sequelize";
+import { QueryInterface } from 'sequelize';
 
 export default {
   async up(queryInterface: QueryInterface) {
     await queryInterface.bulkInsert('users', [
       {
-        name: 'Luidi Pires',
+        name: 'Admin',
+        email: 'admin@gmail.com',
+        password: 'admin123',
+        role: 'admin'
       },
       {
-        name: 'Laura Dias',
+        name: 'João',
+        email: 'joao@gmail.com',
+        password: 'joaozinho',
+        role: 'user'
       },
       {
-        name: 'Ewerton Ferreira',
-      },
-      {
-        name: 'Chrystian Strummiello',
-      },
-      {
-        name: 'Juliana Martinelli',
-      },
-      {
-        name: 'João Possamai',
+        name: 'Maria',
+        email: 'maria@gmail.com',
+        password: 'mariazinha',
+        role: 'user'
       },
     ], {});
   },

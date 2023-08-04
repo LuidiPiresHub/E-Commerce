@@ -1,0 +1,10 @@
+{
+  "name": "e_commerce",
+  "version": "1.0.0",
+  "scripts": {
+    "preinstall": "cd backend && npm install && cd ../frontend && npm install",
+    "dev:front": "cd frontend && npm run dev",
+    "dev:back": "cd backend && npm run compose:up && npm run dev",
+    "lint": "cd backend && npm run lint && cd ../frontend && npm run lint"
+  }
+}

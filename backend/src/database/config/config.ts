@@ -1,4 +1,4 @@
-import { Options } from "sequelize";
+import { Options } from 'sequelize';
 
 const config: Options = {
   username: 'root',
@@ -7,6 +7,6 @@ const config: Options = {
   host: 'localhost',
   port: 3306,
   dialect: 'mysql',
-}
+};
 
 export = config;
