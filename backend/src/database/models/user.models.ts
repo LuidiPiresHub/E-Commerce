@@ -2,6 +2,7 @@ import { DataTypes, Model } from 'sequelize';
 import connection from './index';
 
 class User extends Model {
+  declare id: number;
   declare name: string;
   declare email: string;
   declare password: string;
@@ -9,6 +10,11 @@ class User extends Model {
 }
 
 User.init({
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
   name: {
     type: DataTypes.STRING,
     allowNull: false,
