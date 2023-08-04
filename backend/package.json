@@ -4,6 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --require ts-node/register __tests__/**/*.{test,spec}.ts",
+    "test:unit": "mocha --require ts-node/register __tests__/unit/*.{test,spec}.ts",
+    "test:integration": "mocha --require ts-node/register __tests__/integration/*.{test,spec}.ts",
     "coverage": "nyc npm run test",
     "lint": "npx eslint src/**/*.ts --fix",
     "compose:up": "docker-compose up -d",
