@@ -8,26 +8,30 @@ const INITIAL_STATE = { email: '', password: '' };
 
 export default function Login() {
   const [user, setUser] = useState(INITIAL_STATE);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<null | string>(null);
   const navigate = useNavigate();
 
   const userLogin = async (event: FormEvent) => {
-    event.preventDefault();
-    setUser(INITIAL_STATE)
+    try {
+      event.preventDefault();
+      setUser(INITIAL_STATE)
 
-    const response = await fetch(URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(user),
-    });
-    const { message } = await response.json();
+      const response = await fetch(URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(user),
+      });
+      const { message } = await response.json();
 
-    if (response.ok) {
-      localStorage.setItem('token', JSON.stringify(message));
-      navigate('/products');
-    } else {
-      setError(message);
-      setTimeout(() => setError(null), 2000);
+      if (response.ok) {
+        localStorage.setItem('token', JSON.stringify(message));
+        navigate('/products');
+      } else {
+        throw new Error(message)
+      }
+    } catch (error) {
+      setError((error as Error).message);
+      setTimeout(() => setError(null), 5000);
     }
   };
 
