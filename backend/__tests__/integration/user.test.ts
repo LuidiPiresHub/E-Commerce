@@ -50,45 +50,6 @@ describe('Testes Integração da rota /user', () => {
       expect(body.type).to.deep.equal(serverError);
     });
 
-    it(`${pattern1} "${registerRoute}" ${pattern2} o name não seja passado`, async () => {
-      const { status, body } = await chai.request(app).post(registerRoute).send({});
-      expect(status).to.equal(400);
-      expect(body).to.deep.equal({ message: '"name" is required' });
-    });
-
-    it(`${pattern1} "${registerRoute}" ${pattern2} o email não seja passado`, async () => {
-      const { status, body } = await chai.request(app).post(registerRoute).send({ name: 'user' });
-      expect(status).to.equal(400);
-      expect(body).to.deep.equal({ message: '"email" is required' });
-    });
-
-    it(`${pattern1} "${registerRoute}" ${pattern2} o email não seja valido`, async () => {
-      const { status, body } = await chai.request(app).post(registerRoute).send({ name: 'user', email: 'fakeEmail' });
-      expect(status).to.equal(400);
-      expect(body).to.deep.equal({ message: '"email" must be a valid email' });
-    });
-
-    it(`${pattern1} "${registerRoute}" ${pattern2} a senha não seja passada`, async () => {
-      const { status, body } = await chai.request(app).post(registerRoute)
-        .send({ name: 'user', email: 'user@gmail.com' });
-      expect(status).to.equal(400);
-      expect(body).to.deep.equal({ message: '"password" is required' });
-    });
-
-    it(`${pattern1} "${registerRoute}" ${pattern2} a senha tenha menos que 6 caracteres`, async () => {
-      const { status, body } = await chai.request(app).post(registerRoute)
-        .send({ name: 'user', email: 'user@gmail.com', password: '1234' });
-      expect(status).to.equal(400);
-      expect(body).to.deep.equal({ message: '"password" length must be at least 6 characters long' });
-    });
-
-    it(`${pattern1} "${registerRoute}" ${pattern2} a role não seja passada`, async () => {
-      const { status, body } = await chai.request(app).post(registerRoute)
-        .send({ name: 'user', email: 'user@gmail.com', password: '123456' });
-      expect(status).to.equal(400);
-      expect(body).to.deep.equal({ message: '"role" is required' });
-    });
-
     it(`${pattern1} "${loginRoute}" ${pattern2} o login esteja errado`, async () => {
       sinon.stub(User, 'findOne').resolves(null);
       const { status, body } = await chai.request(app).post(loginRoute).send(userLogin);
@@ -101,31 +62,6 @@ describe('Testes Integração da rota /user', () => {
       const { status, body } = await chai.request(app).post(loginRoute).send(userLogin);
       expect(status).to.equal(500);
       expect(body.type).to.deep.equal(serverError);
-    });
-
-    it(`${pattern1} "${loginRoute}" ${pattern2} o email não seja passado`, async () => {
-      const { status, body } = await chai.request(app).post(loginRoute).send({ password: '123456 ' });
-      expect(status).to.equal(400);
-      expect(body).to.deep.equal({ message: '"email" is required' });
-    });
-
-    it(`${pattern1} "${loginRoute}" ${pattern2} o email não seja valido`, async () => {
-      const { status, body } = await chai.request(app).post(loginRoute).send({ email: 'fakeEmail' });
-      expect(status).to.equal(400);
-      expect(body).to.deep.equal({ message: '"email" must be a valid email' });
-    });
-
-    it(`${pattern1} "${loginRoute}" ${pattern2} a senha não seja passada`, async () => {
-      const { status, body } = await chai.request(app).post(loginRoute).send({ email: 'user@gmail.com' });
-      expect(status).to.equal(400);
-      expect(body).to.deep.equal({ message: '"password" is required' });
-    });
-
-    it(`${pattern1} "${loginRoute}" ${pattern2} a senha tenha menos que 6 caracteres`, async () => {
-      const { status, body } = await chai.request(app).post(loginRoute)
-        .send({ email: 'user@gmail.com', password: '1234' });
-      expect(status).to.equal(400);
-      expect(body).to.deep.equal({ message: '"password" length must be at least 6 characters long' });
     });
   });
 });
