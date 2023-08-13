@@ -27,10 +27,12 @@ export default function Register() {
       const { password, passwordTry } = userCredentials;
       if (password !== passwordTry) throw new Error('As senhas não coincidem');
 
+      const { passwordTry: _, ...userData } = userCredentials;
+
       const response = await fetch(URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...userCredentials, role: 'user' }),
+        body: JSON.stringify({ ...userData, role: 'user' }),
       });
       const { message } = await response.json();
       if (response.ok) {
@@ -41,7 +43,7 @@ export default function Register() {
       }
     } catch (error) {
       setError((error as Error).message);
-      setTimeout(() => setError(null), 2000);
+      setTimeout(() => setError(null), 5000);
     }
     setUserCredentials(INITIAL_STATE);
   }

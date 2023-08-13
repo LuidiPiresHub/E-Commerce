@@ -1,0 +1,53 @@
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.not-found-title {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  animation: glitch 1s infinite;
+  text-shadow: red -3px -2px, cyan 3px 2px;
+}
+
+.not-found-message {
+  font-size: 1.5rem;
+  color: #ccc;
+  animation: glitch 1.5s infinite;
+  text-shadow: red -2px -1px, cyan 2px 1px;
+}
+
+.not-found-button {
+  margin-top: 10px;
+  color: #007bff;
+  text-shadow: red -2px -1px, cyan 2px 1px;
+  font-size: 30px;
+  text-decoration: none;
+  animation: glitch 2s infinite;
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+    opacity: 1;
+  }
+  25% {
+    transform: translate(2px, -2px);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate(-2px, 2px);
+    opacity: 0.9;
+  }
+  75% {
+    transform: translate(2px, 2px);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
