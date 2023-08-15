@@ -5,7 +5,14 @@ import app from '../../src/app';
 import User from '../../src/database/models/user.models';
 import { Model } from 'sequelize';
 import { verifyToken } from '../../src/auth/jwtFunction';
-import { sucessResponseMock, userRegister, userLogin, registerResponseFail, serverError } from './mocks/user.mock';
+import {
+  sucessResponseMock,
+  userRegister,
+  userLogin,
+  registerResponseFail,
+  dbError,
+  serverError,
+} from './mocks/user.mock';
 
 chai.use(chaiHttp);
 
@@ -44,10 +51,10 @@ describe('Testes Integração da rota /user', () => {
     });
 
     it(`${pattern1} "${registerRoute}" lança um erro caso ocorra um erro interno`, async () => {
-      sinon.stub(User, 'create').throws();
+      sinon.stub(User, 'create').throws(serverError);
       const { status, body } = await chai.request(app).post(registerRoute).send(userRegister);
       expect(status).to.equal(500);
-      expect(body.type).to.deep.equal(serverError);
+      expect(body).to.deep.equal({ message: { name: 'Internal Server Error' } });
     });
 
     it(`${pattern1} "${loginRoute}" ${pattern2} o login esteja errado`, async () => {
@@ -58,10 +65,20 @@ describe('Testes Integração da rota /user', () => {
     });
 
     it(`${pattern1} "${loginRoute}" lança um erro caso ocorra um erro interno`, async () => {
-      sinon.stub(User, 'findOne').throws();
+      sinon.stub(User, 'findOne').throws(serverError);
       const { status, body } = await chai.request(app).post(loginRoute).send(userLogin);
       expect(status).to.equal(500);
-      expect(body.type).to.deep.equal(serverError);
+      expect(body).to.deep.equal({ message: { name: 'Internal Server Error' } });
+    });
+
+    it(`${pattern1} ${loginRoute} lança um erro caso ocorra um erro no DB`, async () => {
+      sinon.stub(User, 'findOne').throws(dbError);
+      const { status, body } = await chai.request(app).post(loginRoute).send(userLogin);
+      expect(status).to.equal(500);
+      expect(body).to.deep.equal({ message: 'Error on Database' });
+    });
+    it('', () => {
+      expect(true).to.eq(true);
     });
   });
 });

@@ -16,7 +16,7 @@ module.exports = {
     ],
     quotes: ['error', 'single'],
     '@typescript-eslint/no-unused-vars': [
-      error,
+      'error',
       {
         argsIgnorePattern: '^_',
         ignoreRestSiblings: true,

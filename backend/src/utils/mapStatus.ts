@@ -5,6 +5,7 @@ export enum HttpStatus {
   UNAUTHORIZED = 401,
   NOT_FOUND = 404,
   UNIQUE = 409,
+  INTERNAL = 500
 }
 
 export const mapStatus = (type: keyof typeof HttpStatus): number => HttpStatus[type];

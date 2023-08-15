@@ -14,4 +14,6 @@ export const sucessResponseMock = { dataValues: { id: 1, ...userRegister } };
 
 export const registerResponseFail = { name: 'SequelizeUniqueConstraintError' };
 
+export const dbError = { name: 'SequelizeConnectionError' };
+
 export const serverError = 'Internal Server Error';
