@@ -1,6 +1,6 @@
 import { FormEvent, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './Login.css';
+import styles from './Login.module.css';
 import EventTarget from '../../interfaces/EventTarget.interface';
 
 const URL = 'http://localhost:3001/user/login';
@@ -40,14 +40,14 @@ export default function Login() {
   };
 
   return (
-    <div className='container'>
-      <form onSubmit={userLogin} method='post' className='form-login'>
-        <h1 className='form-title'>Login</h1>
-        <input type='email' placeholder='Email' name='email' value={user.email} onChange={handleChange} className='form-input' />
-        <input type='password' placeholder='Senha' name='password' value={user.password} onChange={handleChange} className='form-input' />
-        <button type='submit' className='form-button'>Login</button>
-        <Link className='form-link' to='/register'>Não tem conta?</Link>
-        {error && <span className='form-message'>{error}</span>}
+    <div className={styles.loginContainer}>
+      <form onSubmit={userLogin} method='post' className={styles.formLogin}>
+        <h1 className={styles.formTitle}>Login</h1>
+        <input type='email' placeholder='Email' name='email' value={user.email} onChange={handleChange} className={styles.formInput} />
+        <input type='password' placeholder='Senha' name='password' value={user.password} onChange={handleChange} className={styles.formInput} />
+        <button type='submit' className={styles.formButton}>Login</button>
+        <Link className={styles.formLink} to='/register'>Não tem conta?</Link>
+        {error && <span className={styles.formMessage}>{error}</span>}
       </form>
     </div>
 

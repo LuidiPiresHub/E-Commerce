@@ -1,4 +1,4 @@
-.not-found-container {
+.notFoundContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -6,21 +6,21 @@
   height: 100vh;
 }
 
-.not-found-title {
+.notFoundTitle {
   font-size: 3rem;
   margin-bottom: 20px;
   animation: glitch 1s infinite;
   text-shadow: red -3px -2px, cyan 3px 2px;
 }
 
-.not-found-message {
+.notFoundMessage {
   font-size: 1.5rem;
   color: #ccc;
   animation: glitch 1.5s infinite;
   text-shadow: red -2px -1px, cyan 2px 1px;
 }
 
-.not-found-button {
+.notFoundButton {
   margin-top: 10px;
   color: #007bff;
   text-shadow: red -2px -1px, cyan 2px 1px;
