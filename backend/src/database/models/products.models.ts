@@ -9,6 +9,12 @@ class Products extends Model {
 }
 
 Products.init({
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+    allowNull: false,
+  },
   productName: {
     type: DataTypes.STRING,
     allowNull: false,
