@@ -1,42 +1,37 @@
 import { DataTypes, Model } from 'sequelize';
 import connection from './index';
 
-class User extends Model {
+class Products extends Model {
   declare id: number;
-  declare name: string;
-  declare email: string;
-  declare password: string;
-  declare role: string;
+  declare productName: string;
+  declare price: number;
+  declare category: string;
 }
 
-User.init({
+Products.init({
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
     allowNull: false,
   },
-  name: {
+  productName: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  email: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: true,
-  },
-  password: {
-    type: DataTypes.STRING,
+  price: {
+    type: DataTypes.INTEGER,
     allowNull: false,
   },
-  role: {
+  category: {
     type: DataTypes.STRING,
     allowNull: false,
   },
 }, {
   sequelize: connection,
-  tableName: 'users',
+  tableName: 'products',
   timestamps: false,
+  underscored: true,
 });
 
-export default User;
+export default Products;

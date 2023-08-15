@@ -2,33 +2,28 @@ import { QueryInterface, DataTypes } from 'sequelize';
 
 export default {
   async up(queryInterface: QueryInterface, sequelize: typeof DataTypes) {
-    await queryInterface.createTable('users', {
+    await queryInterface.createTable('products', {
       id: {
         type: sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
       },
-      name: {
+      product_name: {
         type: sequelize.STRING,
         allowNull: false,
       },
-      email: {
-        type: sequelize.STRING,
-        allowNull: false,
-        unique: true,
-      },
-      password: {
-        type: sequelize.STRING,
+      price: {
+        type: sequelize.INTEGER,
         allowNull: false,
       },
-      role: {
-        type: DataTypes.STRING,
+      category: {
+        type: sequelize.STRING,
         allowNull: false,
       },
     });
   },
   async down(queryInterface: QueryInterface) {
-    await queryInterface.dropTable('users');
+    await queryInterface.dropTable('products');
   },
 };
