@@ -1,4 +1,4 @@
-.container {
+.loginContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6,7 +6,7 @@
   padding: 0 10px;
 }
 
-.form-login {
+.formLogin {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,12 +19,12 @@
   width: 300px;
 }
 
-.form-title {
+.formTitle {
   text-align: center;
   margin-bottom: 20px;
 }
 
-.form-input {
+.formInput {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
@@ -34,7 +34,7 @@
   color: #fff;
 }
 
-.form-button {
+.formButton {
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -44,13 +44,13 @@
   cursor: pointer;
 }
 
-.form-link {
+.formLink {
   margin-top: 10px;
   color: #007bff;
   text-decoration: none;
 }
 
-.form-message {
+.formMessage {
   color: red;
   margin-top: 10px;
   text-align: center;

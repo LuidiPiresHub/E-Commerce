@@ -1,4 +1,4 @@
-.register-container {
+.registerContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6,7 +6,7 @@
   padding: 0 10px;
 }
 
-.register-form {
+.registerForm {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,12 +19,12 @@
   width: 300px;
 }
 
-.form-register-title {
+.formRegisterTitle {
   text-align: center;
   margin-bottom: 20px;
 }
 
-.register-input {
+.registerInput {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
@@ -34,7 +34,7 @@
   color: #fff;
 }
 
-.register-button {
+.registerButton {
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -44,13 +44,13 @@
   cursor: pointer;
 }
 
-.register-link {
+.registerLink {
   margin-top: 10px;
   color: #007bff;
   text-decoration: none;
 }
 
-.register-message {
+.registerMessage {
   color: red;
   margin-top: 10px;
   text-align: center;
