@@ -15,20 +15,27 @@ export default function Products() {
     getProducts();
   }, []);
 
+  interface IProduct {
+    id: number;
+    productName: string;
+    oldPrice: number;
+    price: number;
+    discount: number;
+    productUrl: string;
+  }
+
   return (
-    <section>{products.map(({ id, productName }) => (
-      <div key={id} className={styles.cardsContainer}>
-        <div className={styles.card}>
-          <img className={styles.productImg} src="url da imagem" />
-          <h1 className={styles.name}>{productName}</h1>
-          <div className={styles.priceContainer}>
-            <h2 className={styles.oldPrice}>R$ 3000.00</h2>
-            <h2 className={styles.price}>R$ 1500.00</h2>
-          </div>
-          <span className={styles.discount}>50% OFF</span>
-          <span>Em até 12x R$125,00 sem juros</span>
-          <button type='button' className={styles.cardBtn}>Comprar</button>
+    <section className={styles.cardsContainer}>{products.map((product: IProduct) => (
+      <div className={styles.card} key={product.id}>
+        <img className={styles.productImg} src={product.productUrl} />
+        <h1 className={styles.name}>{product.productName}</h1>
+        <div className={styles.priceContainer}>
+          <h2 className={styles.oldPrice}>{`R$ ${product.oldPrice.toFixed(2)}`}</h2>
+          <h2 className={styles.price}>{`R$ ${product.price.toFixed(2)}`}</h2>
         </div>
+        <span className={styles.discount}>{`${product.discount}% OFF`}</span>
+        <span>{`Em até 12x ${(product.price / 12).toFixed(2)} sem juros`}</span>
+        <button type='button' className={styles.cardBtn}>Comprar</button>
       </div>
     ))}</section>
   )
