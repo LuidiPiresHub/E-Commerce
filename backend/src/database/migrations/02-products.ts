@@ -9,8 +9,20 @@ export default {
         autoIncrement: true,
         allowNull: false,
       },
+      product_url: {
+        type: sequelize.STRING,
+        allowNull: false,
+      },
       product_name: {
         type: sequelize.STRING,
+        allowNull: false,
+      },
+      old_price: {
+        type: sequelize.INTEGER,
+        allowNull: false,
+      },
+      discount: {
+        type: sequelize.INTEGER,
         allowNull: false,
       },
       price: {

@@ -2,7 +2,8 @@ import Products from '../database/models/products.models';
 import { IService } from '../interfaces/products.interface';
 
 const getProducts = async (): Promise<IService> => {
-  const products = await Products.findAll();
+  const data = await Products.findAll();
+  const products = data.map(({ dataValues }) => dataValues);
   if (products) {
     return { type: 'OK', message: products };
   }

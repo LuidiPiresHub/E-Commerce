@@ -15,8 +15,20 @@ Products.init({
     autoIncrement: true,
     allowNull: false,
   },
+  product_url: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   productName: {
     type: DataTypes.STRING,
+    allowNull: false,
+  },
+  old_price: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  discount: {
+    type: DataTypes.INTEGER,
     allowNull: false,
   },
   price: {
