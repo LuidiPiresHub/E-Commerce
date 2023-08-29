@@ -11,7 +11,7 @@
     "compose:up": "docker-compose up -d",
     "compile": "npx tsc",
     "start": "node dist/src/server.js",
-    "prestart": "npm run compile && npx sequelize db:drop && npx sequelize db:create && npx sequelize db:migrate",
+    "prestart": "npm run compile && npx sequelize db:create && npx sequelize db:migrate",
     "dev": "nodemon --exec ts-node src/server.ts",
     "restart": "npm run compile && npx sequelize db:drop && npx sequelize db:create && npx sequelize db:migrate && npx sequelize db:seed:all"
   },
